@@ -67,11 +67,12 @@ export const HomePage = () => {
         // className={clsx(`bg-red-800 pt-32 min-h-screen`)}
         className={clsx(`pt-16 min-h-screen`)}
         style={{
-          backgroundImage: responsive ? `url(${background})` : `url(${backgroundMobile})`,
+          backgroundImage: selectData ? '' : responsive ? `url(${background})` : `url(${backgroundMobile})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'top',
           backgroundBlendMode: 'multiply',
+          height: '10px',
         }}
       >
         <Container>
