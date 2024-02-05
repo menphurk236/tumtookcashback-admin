@@ -65,7 +65,7 @@ export const HomePage = () => {
     <Fragment>
       <section
         // className={clsx(`bg-red-800 pt-32 min-h-screen`)}
-        className={clsx(`pt-32 min-h-screen`)}
+        className={clsx(`pt-16 min-h-screen`)}
         style={{
           backgroundImage: responsive ? `url(${background})` : `url(${backgroundMobile})`,
           backgroundRepeat: 'no-repeat',
@@ -78,10 +78,10 @@ export const HomePage = () => {
           {/*<div className={clsx(`flex justify-center`)}>*/}
           {/*  <Logo className={clsx(`mb-8`)} type="white" />*/}
           {/*</div>*/}
-          <div className={clsx(`-mt-12 grid h-full grid-cols-1 gap-12 content-center`, `sm:grid-cols-1`)}>
+          <div className={clsx(`mt-2 grid h-full grid-cols-1 gap-12 content-center`, `sm:grid-cols-1`)}>
             <div className={clsx(`flex flex-col justify-center items-center`)}>
               <span className={clsx(`text-5xl`)}>CASHBACK</span>
-              <div className={clsx(`mt-8 flex items-center space-x-2`)}>
+              <div className={clsx(`mt-3 flex items-center space-x-2`)}>
                 <Input.AutoComplete
                   suffix={<SvgIcon name="search" className={clsx(`square-6`)} />}
                   className={clsx(`w-[300px]`, `sm:w-auto`)}
