@@ -1,0 +1,13 @@
+.confirm-modal {
+  .confirm-modal-footer {
+    @apply mt-6 flex items-center justify-end space-x-2;
+
+    .button.default {
+      @apply bg-white-600;
+
+      &:hover {
+        @apply bg-white-300;
+      }
+    }
+  }
+}

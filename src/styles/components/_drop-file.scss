@@ -1,0 +1,91 @@
+.input-dropfile {
+  @apply relative cursor-pointer z-0;
+
+  &-container {
+    @apply relative z-30 flex h-full w-full items-center justify-center text-center;
+  }
+
+  &-text {
+    &.is-invalid {
+      @apply text-error;
+    }
+  }
+
+  &-preview {
+    @apply pointer-events-none absolute inset-0 z-10;
+
+    img {
+      @apply h-full w-full object-cover object-center;
+    }
+  }
+
+  &-overlay {
+    @apply pointer-events-none absolute inset-0 z-20 bg-dark-500/70;
+  }
+}
+
+.input-dropfile-form-wrapper {
+  @apply relative;
+}
+
+.input-dropfile-form {
+  @apply relative flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-lg border-2 border-dashed border-primary-500/50 text-center z-0;
+
+  &.is-invalid {
+    @apply border-error bg-error/5;
+  }
+
+  &-info {
+    @apply flex flex-col items-center relative z-30;
+
+    &.has-overlay {
+      @apply text-white-900;
+    }
+  }
+
+  &-icon {
+    @apply square-10;
+  }
+
+  &-text {
+    @apply inline-block;
+
+    &:last-of-type {
+      @apply text-primary-500;
+    }
+  }
+
+  &-preview {
+    @apply pointer-events-none absolute inset-0 z-10;
+
+    img {
+      @apply h-full w-full object-contain object-center;
+
+      &.contain {
+        @apply object-contain;
+      }
+
+      &.cover {
+        @apply object-cover;
+      }
+    }
+  }
+
+  &-delete {
+    @apply absolute right-2 top-2 z-20 rounded-lg cursor-pointer;
+
+    > svg {
+      @apply square-8 text-white-900;
+    }
+
+    &:hover {
+      @apply opacity-50;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .input-dropfile-form {
+    @apply bg-dark-500;
+  }
+}

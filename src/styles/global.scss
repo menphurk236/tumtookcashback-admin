@@ -1,0 +1,27 @@
+@import '@fontsource/kanit/300.css';
+@import '@fontsource/kanit/400.css';
+@import '@fontsource/kanit/500.css';
+@import '@fontsource/kanit/600.css';
+
+@tailwind base;
+@import './base/layout';
+@import './base/typography';
+
+@tailwind components;
+@import './components/container';
+@import './components/input';
+@import './components/card';
+@import './components/table';
+@import './components/backoffice';
+@import './components/dropdown';
+@import './components/divider';
+@import './components/popover';
+@import './components/pagination';
+@import './components/modal';
+@import './components/loader';
+@import './components/confirm-modal';
+@import './components/drop-file';
+
+@import './components/photoView';
+
+@tailwind utilities;

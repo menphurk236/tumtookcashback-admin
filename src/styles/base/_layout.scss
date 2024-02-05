@@ -1,0 +1,54 @@
+@layer base {
+  html {
+    body {
+      @apply text-dark-500;
+    }
+  }
+
+  main {
+    @apply translate-y-0 transition-all duration-200 will-change-transform;
+  }
+
+  button,
+  a {
+    @apply outline-none;
+  }
+
+  // [data-layout='user'] {
+  section {
+    @apply px-16;
+
+    @screen 2xl {
+      @apply px-12;
+    }
+
+    @screen sm {
+      @apply px-4;
+    }
+  }
+
+  .main-space-x {
+    @apply px-16;
+
+    @screen 2xl {
+      @apply px-12;
+    }
+
+    @screen sm {
+      @apply px-4;
+    }
+  }
+
+  .replace-main-space-x {
+    @apply -mx-16;
+
+    @screen 2xl {
+      @apply -mx-12;
+    }
+
+    @screen sm {
+      @apply -mx-4;
+    }
+  }
+  // }
+}
