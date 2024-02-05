@@ -8,8 +8,8 @@ import { Input, Card, Button, SvgIcon } from '@/components/UI'
 import { formatNumber } from '@/utils/format/number'
 import { SearchService } from '@/services'
 
-import background from '../../assets/background.jpg'
-import backgroundMobile from '../../assets/bg-mobile.jpg'
+import background from '../../assets/backgroud-new.jpg'
+import backgroundMobile from '../../assets/backgroud-new.jpg'
 
 import { useBackofficeLayout, useDebounce } from '@/hooks'
 import type { ITransaction } from '@/types/modules/transaction'
@@ -78,8 +78,8 @@ export const HomePage = () => {
           {/*<div className={clsx(`flex justify-center`)}>*/}
           {/*  <Logo className={clsx(`mb-8`)} type="white" />*/}
           {/*</div>*/}
-          <div className={clsx(`mt-6 grid h-full grid-cols-3 gap-4`, `sm:grid-cols-1`)}>
-            <div className={clsx(`flex flex-col`)}>
+          <div className={clsx(`-mt-12 grid h-full grid-cols-1 gap-12 content-center`, `sm:grid-cols-1`)}>
+            <div className={clsx(`flex flex-col justify-center items-center`)}>
               <span className={clsx(`text-5xl`)}>CASHBACK</span>
               <div className={clsx(`mt-8 flex items-center space-x-2`)}>
                 <Input.AutoComplete
