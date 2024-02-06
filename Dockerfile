@@ -14,4 +14,5 @@ COPY --from=build-stage /app/dist /usr/share/nginx/html
 # Copy the default nginx.conf
 #COPY --from=build-stage /app/default.conf /etc/nginx/conf.d/default.conf
 
-CMD ["npm", "run", "preview"]
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
