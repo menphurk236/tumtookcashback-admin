@@ -9,7 +9,7 @@ import { formatNumber } from '@/utils/format/number'
 import { SearchService } from '@/services'
 
 import background from '../../assets/backgroud-new.jpg'
-import backgroundMobile from '../../assets/backgroud-new.jpg'
+import backgroundMobile from '../../assets/bg-mobile-new.jpg'
 
 import { useBackofficeLayout, useDebounce } from '@/hooks'
 import type { ITransaction } from '@/types/modules/transaction'
