@@ -27,7 +27,7 @@ module.exports = {
   ],
   plugins: ['prettier', 'react-hooks'],
   rules: {
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
+    'prettier/prettier': 0,
     '@typescript-eslint/consistent-type-imports': 'warn',
     'no-console': ['warn', { allow: ['info', 'warn', 'error', 'debug'] }],
     'no-plusplus': 0,
