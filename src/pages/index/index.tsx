@@ -65,7 +65,7 @@ export const HomePage = () => {
     <Fragment>
       <section
         // className={clsx(`bg-red-800 pt-32 min-h-screen`)}
-        className={clsx(`pt-16 min-h-screen`)}
+        className={clsx(`pt-28 min-h-screen`)}
         style={{
           backgroundImage: selectData ? '' : responsive ? `url(${background})` : `url(${backgroundMobile})`,
           backgroundRepeat: 'no-repeat',
@@ -113,8 +113,11 @@ export const HomePage = () => {
             </div>
             {selectData && (
               <>
-                <Card className={clsx(`h-fit bg-opacity-80 p-0`)}>
-                  <div className={clsx(`rounded-t-lg bg-red-500 p-4`)}>
+                <div className='grid grid-cols-2 gap-1 justify-center'>
+                  <div className="w-26 h-12"><Card className={clsx(`h-fit bg-opacity-80 p-0`)}>
+                  <div className={clsx(`rounded-t-lg p-4`)} style={{ 
+                    background: '#ed1f24'
+                   }}>
                     <span className={clsx(`text-header-4 text-white-900`)}>ข้อมูลลูกค้า</span>
                   </div>
                   <div className="flex items-center justify-between px-6 py-4">
@@ -129,9 +132,11 @@ export const HomePage = () => {
                       </div>
                     </div>
                   </div>
-                </Card>
-                <Card className={clsx(`mb-20 h-fit bg-opacity-80 p-0`)}>
-                  <div className={clsx(`rounded-t-lg bg-red-500 p-4`)}>
+                </Card></div>  
+                  <div className="w-26 h-12"><Card className={clsx(`mb-20 h-fit bg-opacity-80 p-0`)}>
+                  <div className={clsx(`rounded-t-lg p-4`)} style={{ 
+                    background: '#ed1f24'
+                   }}>
                     <span className={clsx(`text-header-4 text-white-900`)}>อ้างอิงธุรกรรม</span>
                   </div>
 
@@ -149,7 +154,10 @@ export const HomePage = () => {
                       </div>
                     )}
                   </div>
-                </Card>
+                </Card></div>  
+                </div>
+                
+                
               </>
             )}
           </div>
