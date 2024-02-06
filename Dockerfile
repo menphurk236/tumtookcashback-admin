@@ -1,22 +1,17 @@
-# FROM node:16 as builder
-# WORKDIR /app
-# COPY package.json ./
-# COPY ./ ./
-# RUN npm install
-# RUN npm run build
-
-# # Step 2: Set up the production environment
-# FROM nginx:stable-alpine
-# COPY --from=builder /app/dist /usr/share/nginx/html
-# COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# EXPOSE 80
-# CMD ["nginx", "-g", "daemon off;"]
-
-FROM node:16
+FROM node:16 as build-stage
 WORKDIR /app
 COPY package.json ./
 COPY ./ ./
 RUN npm install
 RUN npm run build
+
+RUN npm install --cache /tmp/empty-cache
+RUN npm cache verify
+RUN npm cache clean --force
+
+FROM nginx:stable-alpine
+COPY --from=build-stage /app/dist /usr/share/nginx/html
+# Copy the default nginx.conf
+#COPY --from=build-stage /app/default.conf /etc/nginx/conf.d/default.conf
+
 CMD ["npm", "run", "preview"]
