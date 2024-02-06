@@ -1,43 +1,43 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from "react";
 
-import { Link } from 'react-router-dom'
-import clsx from 'clsx'
+import { Link } from "react-router-dom";
+import clsx from "clsx";
 
-import Dropdown from './Dropdown'
+import Dropdown from "./Dropdown";
 
 const MenuItems = ({ items, depthLevel }) => {
-  const [dropdown, setDropdown] = useState(false)
+  const [dropdown, setDropdown] = useState(false);
 
-  const ref = useRef()
+  const ref = useRef();
 
   useEffect(() => {
     const handler = (event) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (dropdown && ref.current && !ref.current.contains(event.target)) {
-        setDropdown(false)
+        setDropdown(false);
       }
-    }
-    document.addEventListener('mousedown', handler)
-    document.addEventListener('touchstart', handler)
+    };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener('mousedown', handler)
-      document.removeEventListener('touchstart', handler)
-    }
-  }, [dropdown])
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [dropdown]);
 
   const onMouseEnter = () => {
-    window.innerWidth > 960 && setDropdown(true)
-  }
+    window.innerWidth > 960 && setDropdown(true);
+  };
 
   const onMouseLeave = () => {
-    window.innerWidth > 960 && setDropdown(false)
-  }
+    window.innerWidth > 960 && setDropdown(false);
+  };
 
   const closeDropdown = () => {
-    dropdown && setDropdown(false)
-  }
+    dropdown && setDropdown(false);
+  };
 
   return (
     <li
@@ -52,40 +52,63 @@ const MenuItems = ({ items, depthLevel }) => {
           <button
             type="button"
             aria-haspopup="menu"
-            aria-expanded={dropdown ? 'true' : 'false'}
-            className={depthLevel === 0 ? clsx(`text-white-900`) : clsx(`text-black`)}
+            aria-expanded={dropdown ? "true" : "false"}
+            className={
+              depthLevel === 0 ? clsx(`text-white-900`) : clsx(`font-light`)
+            }
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {window.innerWidth < 960 && depthLevel === 0 ? items.title : <Link to={items.url}>{items.title}</Link>}
+            {window.innerWidth < 960 && depthLevel === 0 ? (
+              items.title
+            ) : (
+              <Link to={items.url}>{items.title}</Link>
+            )}
 
-            {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel > 0 && window.innerWidth > 960 ? (
+            {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
+                0 && window.innerWidth > 960 ? (
               <span>&raquo;</span>
             ) : (
               <span className="arrow" />
             )}
           </button>
-          <Dropdown depthLevel={depthLevel} submenus={items.submenu} dropdown={dropdown} />
+          <Dropdown
+            depthLevel={depthLevel}
+            submenus={items.submenu}
+            dropdown={dropdown}
+          />
         </>
       ) : !items.url && items.submenu ? (
         <>
           <button
             type="button"
             aria-haspopup="menu"
-            aria-expanded={dropdown ? 'true' : 'false'}
-            className={depthLevel === 0 ? clsx(`text-white-900`) : clsx(`text-black`)}
+            aria-expanded={dropdown ? "true" : "false"}
+            className={
+              depthLevel === 0 ? clsx(`text-white-900`) : clsx(`font-light`)
+            }
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {items.title} {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
+            {items.title}{" "}
+            {depthLevel > 0 ? <span>&raquo;</span> : <span className="arrow" />}
           </button>
-          <Dropdown depthLevel={depthLevel} submenus={items.submenu} dropdown={dropdown} />
+          <Dropdown
+            depthLevel={depthLevel}
+            submenus={items.submenu}
+            dropdown={dropdown}
+          />
         </>
       ) : (
-        <Link to={items.url} className={depthLevel === 0 ? clsx(`text-white-900`) : clsx(`text-black`)}>
+        <Link
+          to={items.url}
+          className={
+            depthLevel === 0 ? clsx(`text-white-900`) : clsx(`font-light`)
+          }
+        >
           {items.title}
         </Link>
       )}
     </li>
-  )
-}
+  );
+};
 
-export default MenuItems
+export default MenuItems;
