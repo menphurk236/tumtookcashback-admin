@@ -1,6 +1,6 @@
 export const ENV = {
   // Endpoint Rest API
-  API_ENDPOINT: "https://cashback-api.tumtook.com",
+  API_ENDPOINT: import.meta.env.VITE_API_ENDPOINT,
 
   // Firebase
   // FIREBASE_API_KEY: import.meta.env.VITE_FIREBASE_API_KEY,
