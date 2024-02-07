@@ -33,10 +33,10 @@ export default () => {
       include: ['react/jsx-runtime'],
       exclude: [],
     },
-    // server: {
-    //   host: true,
-    //   strictPort: true,
-    //   port: 3000
-    // }
+    server: {
+      host: true,
+      strictPort: true,
+      port: 3000
+    }
   })
 }
