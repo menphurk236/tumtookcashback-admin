@@ -206,7 +206,7 @@ export const HomePage = () => {
           {selectData === null ? (
             <div className="justify-center sm:px-12">
               <img
-                className="m-auto max-h-full object-scale-down drop-shadow-md"
+                className="m-auto max-h-full object-scale-down"
                 src={backgroundInner}
                 width={400}
                 alt=""
