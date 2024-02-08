@@ -208,7 +208,7 @@ export const HomePage = () => {
 
           <div className="justify-center sm:px-12">
             <img
-              className="m-auto max-h-full rounded-md object-scale-down drop-shadow-md"
+              className="m-auto max-h-full object-scale-down drop-shadow-md"
               src={backgroundInner}
               width={400}
               alt=""
