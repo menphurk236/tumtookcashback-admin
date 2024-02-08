@@ -69,9 +69,7 @@ export const HomePage = () => {
         // className={clsx(`bg-red-800 pt-32 min-h-screen`)}
         className={clsx(`pt-28 min-h-screen`)}
         style={{
-          backgroundImage: selectData
-            ? ""
-            : responsive
+          backgroundImage: responsive
             ? `url(${background})`
             : `url(${backgroundMobile})`,
           backgroundRepeat: "no-repeat",
@@ -205,15 +203,18 @@ export const HomePage = () => {
               </>
             )}
           </div>
-
-          <div className="justify-center sm:px-12">
-            <img
-              className="m-auto max-h-full object-scale-down drop-shadow-md"
-              src={backgroundInner}
-              width={400}
-              alt=""
-            />
-          </div>
+          {selectData === null ? (
+            <div className="justify-center sm:px-12">
+              <img
+                className="m-auto max-h-full object-scale-down drop-shadow-md"
+                src={backgroundInner}
+                width={400}
+                alt=""
+              />
+            </div>
+          ) : (
+            ""
+          )}
         </Container>
       </section>
     </Fragment>
