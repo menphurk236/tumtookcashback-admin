@@ -1,59 +1,70 @@
-import { Fragment } from 'react'
+import { Fragment } from "react";
 
-import clsx from 'clsx'
-import { useFormik } from 'formik'
-import * as yup from 'yup'
-import { Link, useNavigate } from 'react-router-dom'
-import { useMutation } from '@tanstack/react-query'
-import { toast } from 'react-hot-toast'
+import clsx from "clsx";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
-import { Button, Card, Input } from '@/components/UI'
-import { getErrorWithTouched } from '@/utils/form'
-import { handleAxiosErrorMsg } from '@/libs/axios'
-import { CustomerService } from '@/services'
+import { Button, Card, Input } from "@/components/UI";
+import { getErrorWithTouched } from "@/utils/form";
+import { handleAxiosErrorMsg } from "@/libs/axios";
+import { CustomerService } from "@/services";
 
-import type { ICustomer } from '@/types/modules/customer'
+import type { ICustomer } from "@/types/modules/customer";
 
 interface IFormValues {
-  name: string | null
-  company: string | null
-  tel: string
-  tax: string
+  name: string | null;
+  company: string | null;
+  tel: string;
+  tax: string;
 }
+
+const phoneRegExp = /^(?=.{10}$)[0-9]+(?:[0-9]+){1,3}$/;
 
 const validationSchema = yup.object().shape({
   // name: yup.string().required(`กรุณากรอกชื่อ`),
   // company: yup.string().required(`กรุณากรอกชื่อบริษัท`),
-  tel: yup.string().required(`กรุณากรอกเบอร์โทร`),
+  tel: yup
+    .string()
+    .matches(phoneRegExp, "กรอกเป็นตัวเลขเท่านั้น โดยไม่มี -")
+    .required(`กรุณากรอกเบอร์โทร`),
   // tax: yup.string().required(`กรุณากรอกหมายเลขผู้เสียภาษี`),
-})
+});
 
 export const CustomerCreatePage = () => {
-  const navigate = useNavigate()
-  const initialValues: IFormValues = { name: '', company: '', tel: '', tax: '' }
+  const navigate = useNavigate();
+  const initialValues: IFormValues = {
+    name: "",
+    company: "",
+    tel: "",
+    tax: "",
+  };
 
   // _Form
   const formik = useFormik<IFormValues>({
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      mutate(values)
+      mutate(values);
     },
-  })
+  });
 
   // _Mutation
   const { mutate, isLoading } = useMutation(
-    (payload: Pick<ICustomer, 'name' | 'company' | 'tel' | 'tax'>) => CustomerService.create(payload),
+    (payload: Pick<ICustomer, "name" | "company" | "tel" | "tax">) =>
+      CustomerService.create(payload),
     {
       onError: (err) => {
-        const msg = handleAxiosErrorMsg(err)
-        toast.error(msg)
+        const msg = handleAxiosErrorMsg(err);
+        toast.error(msg);
       },
       onSuccess: (res) => {
-        navigate(`/backoffice/balance/${res.id}`)
+        navigate(`/backoffice/balance/${res.id}`);
       },
-    },
-  )
+    }
+  );
 
   return (
     <Fragment>
@@ -69,7 +80,7 @@ export const CustomerCreatePage = () => {
               placeholder="กรอกชื่อ"
               onChange={formik.handleChange}
               value={formik.values.name}
-              error={getErrorWithTouched(formik, 'name')}
+              error={getErrorWithTouched(formik, "name")}
               disabled={isLoading}
             />
           </div>
@@ -83,7 +94,7 @@ export const CustomerCreatePage = () => {
               placeholder="กรอกชื่อบริษัท"
               onChange={formik.handleChange}
               value={formik.values.company}
-              error={getErrorWithTouched(formik, 'company')}
+              error={getErrorWithTouched(formik, "company")}
               disabled={isLoading}
             />
           </div>
@@ -97,7 +108,7 @@ export const CustomerCreatePage = () => {
               placeholder="กรอกเบอร์โทร"
               onChange={formik.handleChange}
               value={formik.values.tel}
-              error={getErrorWithTouched(formik, 'tel')}
+              error={getErrorWithTouched(formik, "tel")}
               disabled={isLoading}
             />
           </div>
@@ -111,23 +122,36 @@ export const CustomerCreatePage = () => {
               placeholder="กรอกหมายเลขผู้เสียภาษี"
               onChange={formik.handleChange}
               value={formik.values.tax}
-              error={getErrorWithTouched(formik, 'tax')}
+              error={getErrorWithTouched(formik, "tax")}
               disabled={isLoading}
             />
           </div>
 
           <div className={clsx(`mt-6 flex items-center space-x-4`)}>
-            <Link to="/backoffice/customer" className={clsx(`inline-block flex-1`)}>
-              <Button variant="danger" className={clsx(`w-full`)} type="button" loading={isLoading}>
+            <Link
+              to="/backoffice/customer"
+              className={clsx(`inline-block flex-1`)}
+            >
+              <Button
+                variant="danger"
+                className={clsx(`w-full`)}
+                type="button"
+                loading={isLoading}
+              >
                 <span className={clsx(`text-body-20`)}>ยกเลิก</span>
               </Button>
             </Link>
-            <Button variant="success" className={clsx(`flex-1`)} type="submit" loading={isLoading}>
+            <Button
+              variant="success"
+              className={clsx(`flex-1`)}
+              type="submit"
+              loading={isLoading}
+            >
               <span className={clsx(`text-body-20`)}>บันทึก</span>
             </Button>
           </div>
         </form>
       </Card>
     </Fragment>
-  )
-}
+  );
+};
