@@ -124,7 +124,10 @@ export const HomePage = () => {
                   ค้นหา
                 </Button>
               </div>
-              <label>กรอกเบอร์โทรหรือเลขที่ใบเสนอราคาเพื่อเช็ค Cashback</label>
+              <label>
+                กรอกเบอร์โทร (ไม่ต้องใส่ -) หรือเลขที่ใบเสนอราคาเพื่อเช็ค
+                Cashback
+              </label>
             </div>
             {selectData && (
               <>
@@ -204,7 +207,7 @@ export const HomePage = () => {
             )}
           </div>
           {selectData === null ? (
-            <div className="justify-center sm:px-12 sm:p-6 xl:p-8">
+            <div className="justify-center xl:p-8 sm:p-6 sm:px-12">
               <img
                 className="m-auto max-h-full object-scale-down"
                 src={backgroundInner}
