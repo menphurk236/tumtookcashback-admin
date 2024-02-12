@@ -21,16 +21,16 @@ interface IFormValues {
   tax: string;
 }
 
-const phoneRegExp = /^(?=.{9}$)[0-9]+(?:[0-9]+){1,3}$/;
+const phoneRegExp = /^[0-9]*$/;
 
 const validationSchema = yup.object().shape({
-  // name: yup.string().required(`กรุณากรอกชื่อ`),
-  // company: yup.string().required(`กรุณากรอกชื่อบริษัท`),
+  //name: yup.string().required(`กรุณากรอกชื่อ`),
+  //company: yup.string().required(`กรุณากรอกชื่อบริษัท`),
   tel: yup
     .string()
     .matches(phoneRegExp, "กรอกเป็นตัวเลขเท่านั้น โดยไม่มี -")
     .required(`กรุณากรอกเบอร์โทร`),
-  // tax: yup.string().required(`กรุณากรอกหมายเลขผู้เสียภาษี`),
+  //tax: yup.string().required(`กรุณากรอกหมายเลขผู้เสียภาษี`),
 });
 
 export const CustomerCreatePage = () => {

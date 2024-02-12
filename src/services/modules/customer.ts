@@ -19,7 +19,7 @@ export default class CustomerService extends BaseService {
    * Create cutomer
    */
   static async create(payload: Pick<ICustomer, 'name' | 'company' | 'tel' | 'tax'>): Promise<Pick<ICustomer, 'id'>> {
-    return this._post('/admin/customer', payload)
+    //return this._post('/admin/customer', payload)
   }
 
   /**
