@@ -21,7 +21,7 @@ interface IFormValues {
   tax: string;
 }
 
-const phoneRegExp = /^(?=.{10}$)[0-9]+(?:[0-9]+){1,3}$/;
+const phoneRegExp = /^(?=.{9}$)[0-9]+(?:[0-9]+){1,3}$/;
 
 const validationSchema = yup.object().shape({
   // name: yup.string().required(`กรุณากรอกชื่อ`),
