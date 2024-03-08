@@ -90,7 +90,7 @@ export const HomePage = () => {
             )}
           >
             <div className={clsx(`flex flex-col items-center justify-center`)}>
-              <span className={clsx(`text-5xl`)}>CASHBACK</span>
+              {/* <span className={clsx(`text-5xl`)}>CASHBACK</span> */}
               <div className={clsx(`mt-3 flex items-center space-x-2`)}>
                 <Input.AutoComplete
                   suffix={
@@ -99,7 +99,7 @@ export const HomePage = () => {
                   className={clsx(`w-[300px]`, `sm:w-auto`)}
                   id="search"
                   name="search"
-                  placeholder="ค้นหารายชื่อ"
+                  placeholder="เช็คจำนวน Cashback"
                   emptyMsg="ไม่พบข้อมูลการค้นหา"
                   value={search}
                   items={
